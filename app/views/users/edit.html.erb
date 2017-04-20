@@ -1,0 +1,84 @@
+<div class="jumbotron">
+  <h1><%= t('myAccount') %></h1>
+</div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4 col-md-offset-4" style="z-index: 99;" >
+      <%= image_tag(@user.photo_url + "?type=large", :class => "panel-image-preview" ,:alt => "profile picture") %>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3" style="position: relative; margin-top: -2%;">
+      <div class="panel panel-default">
+        <div class="panel-body" style="text-align: center; padding-top: 6%;">
+          <h4><%= @user.name %></h4>
+        </div>
+        <div class="panel-footer text-center"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <%= render 'form', user: @user %>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-body" style="text-align: center; padding-top: 6%;">
+          <h2><%= t('myAddress') %></h2>
+        </div>
+        <div class="panel-footer text-center"></div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h4><%= t('registerNewAddress') %></h4>
+        </div>
+        <div class="panel-body" style="text-align: center; padding-top: 6%;">
+          <%= form_tag(addresses_new_path, {:class => 'form-inline js_cep_form'}) do %>
+              <div class="form-group "> <!-- class: has-error -->
+                <%= text_field_tag 'search', nil, placeholder: t('zipCode'), class: "form-control js_cep_selector" %>
+              </div>
+              <div class="form-group ">
+                <%= submit_tag t('newAddressButton'), :class => 'btn btn-default'  %>
+              </div>
+          <% end %>
+          <div class="form-group">
+              <div id="messages"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3">
+      <% @user.addresses.each do |address| %>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4><%= address.title %></h4>
+          </div>
+          <div class="panel-body" style="text-align: center; padding-top: 6%;">
+              <%if(address.other.nil? || address.other == "") %>
+                <%= address.street + ", " + address.number.to_s + " - " + address.city + "/" + address.province  %>
+              <% else %>
+                <%= address.street + ", " + address.number.to_s + ", " + address.other + " - " + address.city + "/" + address.province %>
+
+              <% end %>
+              <br>
+              <%= "CEP: " + address.cep.to_s + " | " + address.reference.to_s%>
+              <br><br>
+              <%= link_to 'Edit', edit_address_path(address), :class => 'btn btn-default' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

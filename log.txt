@@ -1,0 +1,11 @@
+commit 03ee11a3688943e54c2c7f766332898973023fcf
+Author: Eduardo Zanela <eduardozanela@Plutao.local>
+Date:   Wed Apr 19 20:54:57 2017 -0300
+
+    ignore .rpec file
+
+commit 1f9bcb4581599655cc046bf1fde1c2e87b8c2cc8
+Author: Eduardo Zanela <eduardozanela@Plutao.local>
+Date:   Wed Apr 19 20:49:39 2017 -0300
+
+    First Commit

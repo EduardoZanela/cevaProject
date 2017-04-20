@@ -1,0 +1,23 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+
+main{
+    background-color: #fff;
+}
+.navbar{
+    background-color: #bc2026;
+    min-height: 80px;
+}
+.navbar .container{
+    margin-top: 1%;
+}
+.navbar-inverse{
+    border-color: white !important;
+}
+.navbar a{
+    color: white !important;
+}

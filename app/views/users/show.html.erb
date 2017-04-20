@@ -1,0 +1,5 @@
+<h3>User</h3>
+<p>Name: <%= @user.name if @user.name %></p>
+<p>E-mail: <%= @user.email if @user.email %></p>
+<%= image_tag(@user.photo_url + "?type=large", :alt => "rss feed") %>
+<%= @user.id %>

@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+    <% @user = User.find(session[:user_id])%>
+    <li><%= link_to 'Profile', edit_user_path(@user)  %></li>
+    <li><%= link_to 'Sign out', signout_path %></li>
+<% else %>
+    <li><%= link_to 'Sign in', signin_path %></li>
+<% end %>

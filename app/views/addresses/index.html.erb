@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag(addresses_new_path) do %>
+    <%= text_field_tag 'search', nil, placeholder: 'CEP'%>
+    <%= submit_tag 'Buscar' %>
+<% end %>
+
+<h1>Addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Province</th>
+      <th>City</th>
+      <th>Street</th>
+      <th>Other</th>
+      <th>Reference</th>
+      <th>Number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.province %></td>
+        <td><%= address.city %></td>
+        <td><%= address.street %></td>
+        <td><%= address.other %></td>
+        <td><%= address.reference %></td>
+        <td><%= address.number %></td>
+        <td><%= link_to 'Show', address %></td>
+        <td><%= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path %>
